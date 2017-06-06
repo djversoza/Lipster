@@ -1,0 +1,51 @@
+<h2><span ng-click="vm.products()">Products</span> <span ng-click="vm.customers()">Customers</span> <span style="background-color: red;" ng-click="vm.sales()">Sales</span></h2>
+<form>
+  <label for="name">Product</label>
+  <select ng-model="vm.newSale.item" >
+    <option ng-repeat="item in vm.posts" value="{{item.id}}">{{item.name}}<span> | {{item.color}}</span></option>
+  </select>
+
+  <label for="customer">Customer</label>
+  <select ng-model="vm.newSale.cust">
+    <option ng-repeat="cust in vm.custs" value="{{cust.id}}">{{cust.name}}</option>
+  </select>
+
+  <label for="quantity">Quantity Sold</label>
+  <input ng-model="vm.newSale.quantity" type="text" />
+
+  <label for="discount">Customer Discount %</label>
+  <input ng-model="vm.newSale.discount" type="text" />
+
+  <button ng-click="vm.addSale()"  type="submit">Submit</button>
+</form>
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Buyer</th>
+      <th>Quantity</th>
+      <th>Retail Cost</th>
+      <th>Discount Rate</th>
+      <th>Tax</th>
+      <th>Total Profits</th>
+      <th>More Info</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="sale in vm.sales">
+    <tr>
+      <td>{{sale.product_name}}</td>
+      <td>{{sale.customer_name}}</td>
+      <td>{{sale.sale_quantity}}</td>
+      <td>{{sale.sale_cost}}</td>
+      <td>{{sale.sales_discount}}%</td>
+      <td>{{sale.sales_tax}}%</td>
+      <td>{{sale.total_sale}}</td>
+      <td><a>View</a></td>
+      <td>
+        <div><a>Edit</a></div>
+        <div><a>Delete</a></div>
+      </td>
+    </tr>
+  </tbody>
+</table>

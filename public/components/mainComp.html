@@ -1,5 +1,6 @@
 
-  <h2>Striped Rows</h2>
+  <h2><span style="background-color: red;">Products</span> <span ng-click="vm.customers()">Customers</span> <span ng-click="vm.sales()">Sales</span></h2>
+  <button ng-click="vm.logout()" type="button" name="button">Logout</button>
   <form>
     <label for="name">Product</label>
     <input ng-model="vm.newItem.name" type="text" />
@@ -35,7 +36,8 @@
         <th>Discount</th>
         <th>Total Cost</th>
         <th>Retail Cost</th>
-        <th>Edit</th>
+        <th>More Info</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody ng-repeat="item in vm.posts">
@@ -48,6 +50,7 @@
         <td>{{item.discount}}%</td>
         <td>{{item.total_cost}}</td>
         <td>{{item.retail_cost}}</td>
+        <td><a ui-sref="info({id: item.id})">View</a></td>
         <td>
           <div><a ui-sref="edit({id: item.id})">Edit</a></div>
           <div><a ng-click='vm.deleteItem(item)'>Delete</a></div>

@@ -1,4 +1,4 @@
-<h2>Striped Rows</h2>
+<h2>Products</h2>
 <form ng-repeat="item in vm.post">
   <label for="name">Product</label>
   <input ng-model="vm.editItem.name" ng-init="vm.editItem.name=item.name"  type="text" />
@@ -22,6 +22,7 @@
   <input ng-model="vm.editItem.retail_cost" ng-init="vm.editItem.retail_cost=item.retail_cost" type="text" />
 
   <button ng-click="vm.updateItem()"  type="submit">Submit</button>
+  <button ng-click="vm.updateItem()"  type="button">Cancel</button>
 </form>
 <table ng-repeat="item in vm.post"  class="table table-striped">
   <thead>

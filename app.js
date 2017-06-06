@@ -30,6 +30,7 @@ app.use('/users', users);
 app.use('/', login)
 app.use('/mainpage', list)
 app.use('/api/prod', require('./routes/prod'))
+app.use('/api/logout', require('./routes/logout'))
 app.use('*', function(req, res, next) {
   res.render('mainpage')
 })

@@ -19,6 +19,18 @@ function service($http, $state){
     })
   };
 
+  this.addSale = function(newSale){
+    return $http.post('/api/prod/newsale', newSale).then(res =>{
+      return res.data
+    })
+  };
+
+  this.getSales = function(){
+    return $http.get('api/prod/getsale').then(res =>{
+      return res.data.rows
+    })
+  }
+
   this.getOneItem = function(id){
     return $http.get(`api/prod/${id}`).then(data =>{
       return data
@@ -37,7 +49,22 @@ function service($http, $state){
     })
   };
 
+  this.getCustomers = function() {
+    return $http.get('api/prod/getCust').then(data =>{
+      return data
+    })
+  }
 
+  this.addCustomer = function(customer) {
+    return $http.post('api/prod/addCust', customer).then(res =>{
+      return res
+    })
+  };
+
+  this.logout = function() {
+    console.log('in services')
+     $http.get('/api/logout')
+  };
 
 
 }

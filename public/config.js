@@ -19,6 +19,20 @@
       url: '/:id/edit',
       component: 'editItem'
     })
-
+    .state({
+      name: 'info',
+      url: '/:id/info',
+      component: 'moreInfo'
+    })
+    .state({
+      name: 'customer',
+      url: '/customers',
+      component: 'customers'
+    })
+    .state({
+      name: 'sale',
+      url: '/sales',
+      component: 'sales'
+    })
   }
 }())

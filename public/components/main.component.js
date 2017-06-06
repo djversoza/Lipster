@@ -7,9 +7,9 @@
   controllerAs: 'vm'
 });
 
-controller.inject = ['$http', 'postService'];
+controller.inject = ['$http', 'postService', '$state'];
 
-function controller($http, postService){
+function controller($http, postService, $state){
   const vm = this;
   vm.$onInit = function () {
    postService.getItems().then(res =>{
@@ -23,7 +23,7 @@ function controller($http, postService){
     }).then(() =>{
       postService.getItems().then(resp =>{
         vm.posts = resp;
-        vm.newItem = ""
+        vm.newItem = {}
       })
     })
   };
@@ -37,8 +37,22 @@ function controller($http, postService){
         })
       })
     }
+  };
 
+  vm.logout = function(){
+    postService.logout()
+    window.location.href = '/';
+  };
+
+  vm.customers = function(){
+    console.log('click')
+    $state.go('customer')
+  };
+
+  vm.sales = function() {
+    $state.go('sale')
   }
+
 };
 
 }());

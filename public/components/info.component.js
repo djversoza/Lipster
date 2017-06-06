@@ -1,8 +1,8 @@
 (function(){
   'use strict'
   angular.module('lipster')
-  .component('editItem',{
-  templateUrl: 'components/editComp.html',
+  .component('moreInfo',{
+  templateUrl: 'components/info.html',
   controller: controller,
   controllerAs: 'vm'
 });
@@ -16,10 +16,6 @@ function controller($scope,$http, $stateParams, $state, postService){
     postService.getOneItem(id).then(res =>{
       vm.post = res.data;
     })
-  };
-
-  vm.updateItem = function() {
-    postService.updateItem(id, vm.editItem);
   };
 
   vm.cancel = function() {
