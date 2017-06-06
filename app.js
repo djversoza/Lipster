@@ -12,7 +12,8 @@ var list = require('./routes/list')
 var app = express();
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs')
 
 
 // uncomment after placing your favicon in /public
@@ -22,12 +23,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public/mainpage.html')));
+// app.use(express.static(path.join(__dirname, 'public/mainpage.html')));
 
 
 app.use('/users', users);
 app.use('/', login)
 app.use('/mainpage', list)
+app.use('/api/prod', require('./routes/prod'))
+app.use('*', function(req, res, next) {
+  res.render('mainpage')
+})
 
 
 // catch 404 and forward to error handler

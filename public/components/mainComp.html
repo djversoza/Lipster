@@ -1,0 +1,57 @@
+
+  <h2>Striped Rows</h2>
+  <form>
+    <label for="name">Product</label>
+    <input ng-model="vm.newItem.name" type="text" />
+
+    <label for="color">Color</label>
+    <input ng-model="vm.newItem.color" type="text" />
+
+    <label for="quantity">Quantity</label>
+    <input ng-model="vm.newItem.quantity" type="text" />
+
+    <label for="cost">Cost</label>
+    <input ng-model="vm.newItem.cost" type="text" />
+
+    <label for="tax">Tax %</label>
+    <input ng-model="vm.newItem.tax" type="text" />
+
+    <label for="discount">Discount %</label>
+    <input ng-model="vm.newItem.discount" type="text" />
+
+    <label for="retail_cost">Retail Cost</label>
+    <input ng-model="vm.newItem.retail_cost" type="text" />
+
+    <button ng-click="vm.addItems()"  type="submit">Submit</button>
+  </form>
+  <table  class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Color</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Tax</th>
+        <th>Discount</th>
+        <th>Total Cost</th>
+        <th>Retail Cost</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="item in vm.posts">
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.color}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.cost}}</td>
+        <td>{{item.tax}}%</td>
+        <td>{{item.discount}}%</td>
+        <td>{{item.total_cost}}</td>
+        <td>{{item.retail_cost}}</td>
+        <td>
+          <div><a ui-sref="edit({id: item.id})">Edit</a></div>
+          <div><a ng-click='vm.deleteItem(item)'>Delete</a></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

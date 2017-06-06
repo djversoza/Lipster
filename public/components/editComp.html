@@ -1,0 +1,51 @@
+<h2>Striped Rows</h2>
+<form ng-repeat="item in vm.post">
+  <label for="name">Product</label>
+  <input ng-model="vm.editItem.name" ng-init="vm.editItem.name=item.name"  type="text" />
+
+  <label for="color">Color</label>
+  <input ng-model="vm.editItem.color" ng-init="vm.editItem.color=item.color" type="text" />
+
+  <label for="quantity">Quantity</label>
+  <input ng-model="vm.editItem.quantity" ng-init="vm.editItem.quantity=item.quantity" type="text" />
+
+  <label for="cost">Cost</label>
+  <input ng-model="vm.editItem.cost" ng-init="vm.editItem.cost=item.cost" type="text" />
+
+  <label for="tax">Tax %</label>
+  <input ng-model="vm.editItem.tax" ng-init="vm.editItem.tax=item.tax" type="text" />
+
+  <label for="discount">Discount %</label>
+  <input ng-model="vm.editItem.discount" ng-init="vm.editItem.discount=item.discount" type="text" />
+
+  <label for="retail_cost">Retail Cost</label>
+  <input ng-model="vm.editItem.retail_cost" ng-init="vm.editItem.retail_cost=item.retail_cost" type="text" />
+
+  <button ng-click="vm.updateItem()"  type="submit">Submit</button>
+</form>
+<table ng-repeat="item in vm.post"  class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Color</th>
+      <th>Quantity</th>
+      <th>Cost</th>
+      <th>Tax</th>
+      <th>Discount</th>
+      <th>Total Cost</th>
+      <th>Retail Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{item.name}}</td>
+      <td>{{item.color}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.cost}}</td>
+      <td>{{item.tax}}%</td>
+      <td>{{item.discount}}%</td>
+      <td>{{item.total_cost}}</td>
+      <td>{{item.retail_cost}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,12 +1,15 @@
 const express = require('express');
 const router= express.Router();
 const knex = require('../db/knex');
+const path = require('path')
 const bcrypt = require('bcrypt');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const saltRounds = 10;
 
 router.get('/', (req, res, next) =>{
-  console.log('hi')
+  res.clearCookie("loggedin");
+  res.clearCookie("id");
+  res.render('index')
 });
 
 router.post('/LoginUser', function(req, res, next) {
@@ -16,9 +19,9 @@ router.post('/LoginUser', function(req, res, next) {
                  if(user[0]) {
                    bcrypt.compare(req.body.password, user[0].password, function(err, result){
                      if(result) {
-                      console.log('logged in')
+                       res.cookie("id", user[0].id)
+                       res.cookie("loggedin", true);
                       res.redirect('/mainpage')
-
                    } else {
                      res.redirect('/')
                    }
@@ -28,7 +31,6 @@ router.post('/LoginUser', function(req, res, next) {
                  }
 
                })
-
 });
 
 router.post('/NewUser', (req, res, next) =>{
@@ -40,7 +42,6 @@ router.post('/NewUser', (req, res, next) =>{
                             })
                             .then(function(){
                               res.redirect('/')
-
                             });
     });
   });
