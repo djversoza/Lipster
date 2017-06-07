@@ -1,33 +1,13 @@
-<button ng-click="vm.cancel()">Go back</button>
-<h1>Product</h1>
-<table ng-repeat="item in vm.post"  class="table table-striped">
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Color</th>
-      <th>Quantity</th>
-      <th>Cost</th>
-      <th>Tax</th>
-      <th>Discount</th>
-      <th>Total Cost</th>
-      <th>Retail Cost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{item.name}}</td>
-      <td>{{item.color}}</td>
-      <td>{{item.quantity}}</td>
-      <td>{{item.cost}}</td>
-      <td>{{item.tax}}%</td>
-      <td>{{item.discount}}%</td>
-      <td>{{item.total_cost}}</td>
-      <td>{{item.retail_cost}}</td>
-    </tr>
-  </tbody>
-</table>
 
-<h1>Sales</h1>
+<div class="container">
+  <h1>Customer History</h1><button ng-click="vm.cancel()">Go back</button>
+  <div class="row">
+    <div style="border: 3px solid pink; border-radius: 10px; padding: 5px;" class="col-md-12">
+      <h2>{{vm.cust}}</h2>
+    </div>
+  </div>
+</div>
+
 <table  class="table table-striped">
   <thead>
     <tr>

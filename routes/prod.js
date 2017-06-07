@@ -31,6 +31,13 @@ router.get('/getCust', (req, res, next) =>{
   })
 });
 
+router.get('/:id/getOneCust', (req, res, next) =>{
+  let id = req.params.id
+  knex.raw(`SELECT * from cust_sales where cust_id = ${id}`).then(data =>{
+    res.send(data)
+  })
+});
+
 router.post('/addCust', (req, res, next) =>{
     knex.raw(`INSERT into customers(name, seller_id) values(?,?)`, [req.body.name, req.cookies.id]).then(data =>{
       res.send(data)
@@ -40,6 +47,15 @@ router.post('/addCust', (req, res, next) =>{
 router.get('/getsale', (req, res, next) =>{
   knex.raw(`SELECT * from cust_sales where seller_id = ${req.cookies.id}`).then(data =>{
     res.send(data)
+  })
+});
+
+router.get('/:id/theseSales', (req, res, next) =>{
+  let id = req.params.id;
+  knex.raw(`SELECT * FROM cust_sales where prod_id = ?`, [id]).then(data =>{
+    if(req.cookies.id == data.rows[0].seller_id){
+    res.send(data.rows)
+    }
   })
 })
 

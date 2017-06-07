@@ -34,5 +34,10 @@
       url: '/sales',
       component: 'sales'
     })
+    .state({
+      name: 'cInfo',
+      url: '/:id/customerinfo',
+      component: 'custInfo'
+    })
   }
 }())

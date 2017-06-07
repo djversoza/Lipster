@@ -1,5 +1,5 @@
-<h2><span ng-click="vm.products()">Products</span> <span style="background-color: red;" ng-click="vm.customers()">Customers</span><span ng-click="vm.sales()">Sales</span></h2>
 <button ng-click="vm.logout()" type="button" name="button">Logout</button>
+<h2><span ng-click="vm.products()">Products</span> <span style="background-color: red;" ng-click="vm.customers()">Customers</span><span ng-click="vm.sales()">Sales</span></h2>
 <form>
   <label for="name">New Customer</label>
   <input ng-model="vm.newCustomer.name" type="text" />
@@ -8,7 +8,7 @@
 <div class="container" ng-repeat="cust in vm.custs">
   <div class="row">
     <div style="border: 3px solid pink; border-radius: 10px; padding: 5px;" class="col-md-12">
-      <h2><a>{{cust.name}}</a></h2>
+      <h2><a ui-sref="cInfo({id: cust.id})">{{cust.name}}</a></h2>
     </div>
   </div>
 </div>

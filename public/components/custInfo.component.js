@@ -1,8 +1,8 @@
 (function(){
   'use strict'
   angular.module('lipster')
-  .component('moreInfo',{
-  templateUrl: 'components/info.html',
+  .component('custInfo',{
+  templateUrl: 'components/custInfo.html',
   controller: controller,
   controllerAs: 'vm'
 });
@@ -13,17 +13,14 @@ function controller($scope,$http, $stateParams, $state, postService){
   let id = $stateParams.id;
 
   vm.$onInit = function() {
-    postService.getOneItem(id).then(res =>{
-      vm.post = res.data;
-    }).then(() =>{
-      postService.getTheseSales(id).then(resp =>{
-        vm.sales = resp;
-      })
+    postService.getOneCust(id).then(res =>{
+      vm.cust = res.data.rows[0].customer_name
+      vm.sales = res.data.rows;
     })
   };
 
   vm.cancel = function() {
-    $state.go('home');
+    $state.go('customer');
   };
 
 }

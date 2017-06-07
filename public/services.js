@@ -29,10 +29,22 @@ function service($http, $state){
     return $http.get('api/prod/getsale').then(res =>{
       return res.data.rows
     })
+  };
+
+  this.getTheseSales = function(id){
+    return $http.get(`api/prod/${id}/theseSales`).then(res =>{
+      return res.data;
+    })
   }
 
   this.getOneItem = function(id){
     return $http.get(`api/prod/${id}`).then(data =>{
+      return data
+    })
+  };
+
+  this.getOneCust = function (id){
+    return $http.get(`api/prod/${id}/getOneCust`).then(data =>{
       return data
     })
   };
