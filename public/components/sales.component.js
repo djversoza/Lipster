@@ -15,7 +15,6 @@ function controller($http, postService, $state){
   vm.$onInit = function () {
     postService.getItems().then(res =>{
        vm.posts = res
-
      }).then(() =>{
        postService.getCustomers().then(res =>{
          vm.custs = res.data.rows;
@@ -33,7 +32,17 @@ function controller($http, postService, $state){
         vm.sales = res
       })
     })
-  }
+  };
+
+  vm.deleteSale = function(id) {
+    if (confirm(`Are you sure you want to delete this sale? \n(This cannot be undone!)`) == true){
+     postService.deleteSales(id).then(() =>{
+       postService.getSales().then(res =>{
+         vm.sales = res
+       })
+     })
+    }
+  };
 
   vm.products = function() {
     $state.go('home')

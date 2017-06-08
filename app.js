@@ -33,7 +33,7 @@ app.use('/api/prod', require('./routes/prod'))
 app.use('/api/logout', require('./routes/logout'))
 app.use('*', function(req, res, next) {
   res.render('mainpage')
-})
+});
 
 
 // catch 404 and forward to error handler

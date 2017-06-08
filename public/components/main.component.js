@@ -51,7 +51,7 @@ function controller($http, postService, $state){
 
   vm.sales = function() {
     $state.go('sale')
-  }
+  };
 
 };
 

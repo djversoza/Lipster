@@ -31,12 +31,25 @@ router.get('/getCust', (req, res, next) =>{
   })
 });
 
+router.delete('/:id/deleteSale', (req, res, next) =>{
+  knex.raw(`DELETE from cust_sales where id = ${req.params.id}`).then(data =>{
+    res.send(data)
+  })
+})
+
 router.get('/:id/getOneCust', (req, res, next) =>{
   let id = req.params.id
   knex.raw(`SELECT * from cust_sales where cust_id = ${id}`).then(data =>{
     res.send(data)
   })
 });
+
+router.delete(`/:id/thisCustomer`, (req, res, next) =>{
+  let id = req.params.id;
+  knex.raw(`DELETE from customers where id = ${id}`).then(data =>{
+    res.send(data)
+  })
+})
 
 router.post('/addCust', (req, res, next) =>{
     knex.raw(`INSERT into customers(name, seller_id) values(?,?)`, [req.body.name, req.cookies.id]).then(data =>{
@@ -53,9 +66,7 @@ router.get('/getsale', (req, res, next) =>{
 router.get('/:id/theseSales', (req, res, next) =>{
   let id = req.params.id;
   knex.raw(`SELECT * FROM cust_sales where prod_id = ?`, [id]).then(data =>{
-    if(req.cookies.id == data.rows[0].seller_id){
     res.send(data.rows)
-    }
   })
 })
 
@@ -87,22 +98,6 @@ router.post('/newsale', (req, res, next) =>{
   })
 })
 
-// router.post('/', (req, res, next) =>{
-//   let total =  (parseInt(req.body.quantity) * parseInt(req.body.cost)) + ((parseInt(req.body.tax)/100) * (parseInt(req.body.cost) - (parseInt(req.body.cost) * parseInt(req.body.discount)/100)))
-//   knex.raw('INSERT into items(name, color, user_id, quantity, cost, tax, discount, total_cost, retail_cost) VALUES (?,?,?,?,?,?,?,?,?)',
-//   [req.body.name,
-//    req.body.color,
-//    req.cookies.id,
-//    req.body.quantity,
-//    req.body.cost,
-//    req.body.tax,
-//    req.body.discount,
-//    total,
-//    req.body.retail_cost
-//  ]).then(data =>{
-//     res.send(data)
-//   })
-// });
 
 router.get('/:id', (req, res, next) =>{
   let id = req.params.id

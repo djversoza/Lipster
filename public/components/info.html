@@ -38,7 +38,6 @@
       <th>Discount Rate</th>
       <th>Tax</th>
       <th>Total Profits</th>
-      <th>More Info</th>
       <th>Options</th>
     </tr>
   </thead>
@@ -51,10 +50,8 @@
       <td>{{sale.sales_discount}}%</td>
       <td>{{sale.sales_tax}}%</td>
       <td>{{sale.total_sale}}</td>
-      <td><a>View</a></td>
       <td>
-        <div><a>Edit</a></div>
-        <div><a>Delete</a></div>
+        <div><a ng-click="vm.deleteThisSale(sale.id)">Delete</a></div>
       </td>
     </tr>
   </tbody>

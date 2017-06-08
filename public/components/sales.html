@@ -1,5 +1,6 @@
+<div>
 <button ng-click="vm.logout()" type="button" name="button">Logout</button>
-<h2><span ng-click="vm.products()">Products</span> <span ng-click="vm.customers()">Customers</span> <span style="background-color: red;" ng-click="vm.sales()">Sales</span></h2>
+<h2 style="border: 3px solid pink; box-shadow: 5px 5px 8px 1px PaleVioletRed;" ><span ng-click="vm.products()">Products</span> <span ng-click="vm.customers()">Customers</span> <span style="background-color: pink; color: white;" ng-click="vm.sales()">Sales</span></h2>
 <form>
   <label for="name">Product</label>
   <select ng-model="vm.newSale.item" >
@@ -19,7 +20,7 @@
 
   <button ng-click="vm.addSale()"  type="submit">Submit</button>
 </form>
-<table  class="table table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Product</th>
@@ -29,7 +30,6 @@
       <th>Discount Rate</th>
       <th>Tax</th>
       <th>Total Profits</th>
-      <th>More Info</th>
       <th>Options</th>
     </tr>
   </thead>
@@ -42,11 +42,10 @@
       <td>{{sale.sales_discount}}%</td>
       <td>{{sale.sales_tax}}%</td>
       <td>{{sale.total_sale}}</td>
-      <td><a>View</a></td>
       <td>
-        <div><a>Edit</a></div>
-        <div><a>Delete</a></div>
+        <div><a ng-click="vm.deleteSale(sale.id)">Delete</a></div>
       </td>
     </tr>
   </tbody>
 </table>
+</div>

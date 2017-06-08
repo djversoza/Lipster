@@ -1,6 +1,8 @@
 
 <button ng-click="vm.logout()" type="button" name="button">Logout</button>
-  <h2><span style="background-color: red;">Products</span> <span ng-click="vm.customers()">Customers</span> <span ng-click="vm.sales()">Sales</span></h2>
+  <h2 style="border: 3px solid pink; box-shadow: 5px 5px 8px 1px PaleVioletRed;"><span style="background-color: pink; color: white;">Products</span> <span ng-click="vm.customers()">Customers</span> <span ng-click="vm.sales()">Sales</span></h2>
+  <label for="search">Filter</label>
+  <input style="margin: 5px;" ng-model = "vm.search" type="search" placeholder="Filter">
   <form>
     <label for="name">Product</label>
     <input ng-model="vm.newItem.name" type="text" />
@@ -25,7 +27,7 @@
 
     <button ng-click="vm.addItems()"  type="submit">Submit</button>
   </form>
-  <table  class="table table-striped">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Product</th>
@@ -40,7 +42,7 @@
         <th>Options</th>
       </tr>
     </thead>
-    <tbody ng-repeat="item in vm.posts">
+    <tbody ng-repeat="item in vm.posts | filter: vm.search">
       <tr>
         <td>{{item.name}}</td>
         <td>{{item.color}}</td>

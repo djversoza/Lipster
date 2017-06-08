@@ -31,10 +31,18 @@ function service($http, $state){
     })
   };
 
+  this.deleteSales = function(id){
+    return $http.delete(`api/prod/${id}/deleteSale`)
+  };
+
   this.getTheseSales = function(id){
     return $http.get(`api/prod/${id}/theseSales`).then(res =>{
       return res.data;
     })
+  };
+
+  this.deleteCust = function(id){
+    return $http.delete(`api/prod/${id}/thisCustomer`)
   }
 
   this.getOneItem = function(id){

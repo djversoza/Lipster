@@ -12,10 +12,8 @@ controller.inject = ['$http', 'postService', '$state'];
 function controller($http, postService, $state){
   const vm = this;
   vm.$onInit = function () {
-    console.log('start')
    postService.getCustomers().then(res =>{
      vm.custs = res.data.rows;
-     console.log(vm.custs)
     })
   };
 
@@ -25,7 +23,8 @@ function controller($http, postService, $state){
       vm.custs.push(res.data)
     }).then(() =>{
       postService.getCustomers().then(resp =>{
-        vm.custs = resp.data.rows
+        vm.custs = resp.data.rows;
+        vm.newCustomer.name = "";
       })
     })
   };
@@ -41,6 +40,14 @@ function controller($http, postService, $state){
   vm.logout = function(){
     postService.logout()
     window.location.href = '/';
+  };
+
+  vm.deleteCust =function(id){
+    postService.deleteCust(id).then(() =>{
+      postService.getCustomers().then(resp =>{
+        vm.custs = resp.data.rows;
+      })
+    })
   };
 }
 
