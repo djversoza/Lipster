@@ -1,9 +1,9 @@
 
 <div class="container">
-  <h1>Customer History</h1><button style="margin-bottom: 7px;" ng-click="vm.cancel()">Go back</button>
+  <h1 style="color: white; text-shadow: 2px 2px 3px PaleVioletRed;">Customer History</h1><button style="margin-bottom: 7px;" ng-click="vm.cancel()">Go back</button>
   <div class="row">
-    <div style="border: 3px solid pink; border-radius: 10px; padding: 5px;" class="col-md-12">
-      <h2>{{vm.cust}}</h2>
+    <div style="border: 3px solid pink; border-radius: 10px; padding: 5px; background-color: WhiteSmoke; box-shadow: 5px 5px 8px 1px PaleVioletRed;" class="col-md-12">
+      <h2 style="color: white; text-shadow: 2px 2px 3px PaleVioletRed;" >{{vm.cust}}</h2>
     </div>
   </div>
 </div>
@@ -18,8 +18,6 @@
       <th>Discount Rate</th>
       <th>Tax</th>
       <th>Total Profits</th>
-      <th>More Info</th>
-      <th>Options</th>
     </tr>
   </thead>
   <tbody ng-repeat="sale in vm.sales">
@@ -31,11 +29,6 @@
       <td>{{sale.sales_discount}}%</td>
       <td>{{sale.sales_tax}}%</td>
       <td>{{sale.total_sale}}</td>
-      <td><a>View</a></td>
-      <td>
-        <div><a>Edit</a></div>
-        <div><a>Delete</a></div>
-      </td>
     </tr>
   </tbody>
 </table>

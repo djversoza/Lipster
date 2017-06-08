@@ -1,6 +1,6 @@
 <div>
 <button ng-click="vm.logout()" type="button" name="button">Logout</button>
-<h2 style="border: 3px solid pink; box-shadow: 5px 5px 8px 1px PaleVioletRed;" ><span ng-click="vm.products()">Products</span> <span ng-click="vm.customers()">Customers</span> <span style="background-color: pink; color: white;" ng-click="vm.sales()">Sales</span></h2>
+<h2 style="border: 3px solid pink; box-shadow: 5px 5px 8px 1px PaleVioletRed;" ><span style="color: white; text-shadow: 2px 2px 3px PaleVioletRed;" ng-click="vm.products()">Products</span> <span style="color: white; text-shadow: 2px 2px 3px PaleVioletRed;"" ng-click="vm.customers()">Customers</span> <span style="background-color: pink; color: white;" ng-click="vm.sales()">Sales</span></h2>
 <form>
   <label for="name">Product</label>
   <select ng-model="vm.newSale.item" >
@@ -20,7 +20,8 @@
 
   <button ng-click="vm.addSale()"  type="submit">Submit</button>
 </form>
-<table class="table table-striped">
+<div style="box-shadow: 5px 5px 8px 1px PaleVioletRed;">
+<table  class="table table-striped">
   <thead>
     <tr>
       <th>Product</th>
@@ -48,4 +49,5 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>

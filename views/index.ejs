@@ -7,6 +7,17 @@
       <link rel="stylesheet" href="/stylesheets/styles.css" />
   </head>
   <body>
+    <style media="screen">
+      .midSec{
+
+      }
+      .col-xs-4{
+        color: white;
+        text-shadow: 2px 2px 3px PaleVioletRed;
+        text-align: center;
+        margin-top: 10%;
+      }
+    </style>
         <nav id="navi" class="navbar navbar-default " role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,65 +92,53 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-
     <div class="container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-
-      <div class="item active">
-        <center>
-          <img src="lipstick.jpg" alt="Los Angeles" style="width:80%;">
-        </center>
-        <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun!</p>
-        </div>
+    <div class="row midSec">
+      <div class="col-xs-4">
+        <h1>User friendly</h1>
+        <h4>
+          Lipster was made to be as easy to use as possible
+          so no more headaches from giant spreadsheets with a million inputs.
+        </h4>
       </div>
-
-      <div class="item">
-        <center>
-          <img src="lipstick2.jpg" alt="Chicago" style="width:80%;">
-        </center>
-        <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
-        </div>
+      <div class="col-xs-4">
+        <h1>Track</h1>
+        <h4>
+          Lipster keeps track of all your sales, customers, and products in a neat and organized fashion
+          so you'll never have to deal with struggling to find the right information again.
+        </h4>
       </div>
-
-      <div class="item">
-        <center>
-          <img src="lipstick3.jpg" alt="New York" style="width:80%;">
-        </center>
-        <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
-        </div>
+      <div class="col-xs-4">
+        <h1>Relax</h1>
+        <h4>
+          You can relax knowing all your information is in one place and always there to be accessed by you.
+          24/7
+        </h4>
       </div>
+    </div>
+  </div>
+
+
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="navbar-text pull-left">© 2017 - Daniel Versoza
+      </p>
 
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+    // $(document).ready(function() {
+    //   var docHeight = $(window).height();
+    //   var footerHeight = $('.footer').height();
+    //   var footerTop = $('.footer').position().top + footerHeight;
+    //
+    //   if (footerTop < docHeight) {
+    //    $('.footer').css('margin-top', 10+ (docHeight - footerTop) + 'px');
+    //   }
+    //   });
+    </script>
   </body>
 </html>
