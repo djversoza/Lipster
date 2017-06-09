@@ -3,7 +3,7 @@ const router = express.Router()
 const knex = require('../db/knex')
 
 router.get('/', (req, res, next) =>{
-  knex.raw('SELECT * FROM items where user_id = ?', [req.cookies.id]).then(data =>{
+  knex.raw('SELECT * FROM items where user_id = ?', [req.signedCookies.id]).then(data =>{
     res.send(data.rows)
   })
 });
@@ -13,7 +13,7 @@ router.post('/', (req, res, next) =>{
   knex.raw('INSERT into items(name, color, user_id, quantity, cost, tax, discount, total_cost, retail_cost) VALUES (?,?,?,?,?,?,?,?,?)',
   [req.body.name,
    req.body.color,
-   req.cookies.id,
+   req.signedCookies.id,
    req.body.quantity,
    req.body.cost,
    req.body.tax,
@@ -26,7 +26,7 @@ router.post('/', (req, res, next) =>{
 });
 
 router.get('/getCust', (req, res, next) =>{
-  knex.raw(`SELECT * FROM customers where seller_id = ?`, [req.cookies.id]).then(data =>{
+  knex.raw(`SELECT * FROM customers where seller_id = ?`, [req.signedCookies.id]).then(data =>{
     res.send(data)
   })
 });
@@ -52,13 +52,13 @@ router.delete(`/:id/thisCustomer`, (req, res, next) =>{
 })
 
 router.post('/addCust', (req, res, next) =>{
-    knex.raw(`INSERT into customers(name, seller_id) values(?,?)`, [req.body.name, req.cookies.id]).then(data =>{
+    knex.raw(`INSERT into customers(name, seller_id) values(?,?)`, [req.body.name, req.signedCookies.id]).then(data =>{
       res.send(data)
     })
 });
 
 router.get('/getsale', (req, res, next) =>{
-  knex.raw(`SELECT * from cust_sales where seller_id = ${req.cookies.id}`).then(data =>{
+  knex.raw(`SELECT * from cust_sales where seller_id = ${req.signedCookies.id}`).then(data =>{
     res.send(data)
   })
 });
@@ -79,7 +79,7 @@ router.post('/newsale', (req, res, next) =>{
     knex.raw(`SELECT * from customers where id = ?`, [req.body.cust]).then(data2 =>{
     knex.raw(`INSERT into cust_sales(seller_id, cust_id, sales_tax, sales_discount, sale_cost,
     total_sale, sale_quantity, prod_id, customer_name, product_name) values(?,?,?,?,?,?,?,?,?,?)`,
-    [req.cookies.id,
+    [req.signedCookies.id,
      req.body.cust,
      data.rows[0].tax,
      req.body.discount,
@@ -102,7 +102,7 @@ router.post('/newsale', (req, res, next) =>{
 router.get('/:id', (req, res, next) =>{
   let id = req.params.id
   knex.raw(`SELECT * FROM items where id = ?`, [id]).then(data =>{
-    if(req.cookies.id == data.rows[0].user_id){
+    if(req.signedCookies.id == data.rows[0].user_id){
     res.send(data.rows)
     }
   })
@@ -119,7 +119,7 @@ router.patch('/:id', (req, res, next) =>{
   let total =  (parseInt(req.body.quantity) * parseInt(req.body.cost)) + ((parseInt(req.body.tax)/100) * (parseInt(req.body.cost) - (parseInt(req.body.cost) * parseInt(req.body.discount)/100)))
   knex.raw(`UPDATE items set name=?, color=?, user_id=?, quantity=?, cost=?, tax=?, discount=?, total_cost=?, retail_cost=? where id = ${id}`, [req.body.name,
    req.body.color,
-   req.cookies.id,
+   req.signedCookies.id,
    req.body.quantity,
    req.body.cost,
    req.body.tax,

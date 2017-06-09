@@ -19,7 +19,7 @@ router.post('/LoginUser', function(req, res, next) {
                  if(user[0]) {
                    bcrypt.compare(req.body.password, user[0].password, function(err, result){
                      if(result) {
-                       res.cookie("id", user[0].id)
+                       res.cookie("id", user[0].id, {signed: true})
                        res.cookie("loggedin", true);
                       res.redirect('/mainpage')
                    } else {
